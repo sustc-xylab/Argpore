@@ -1,27 +1,3 @@
-# Argpore
-# pre-requisites for installation
-	lastal	there is a version of last-744 will be downloaded with argpore in this git 
-			please makesure lastal and lastdb in last-744/src are execuatable and in your PATH
-			before run argpore.sh 
-	ruby
-	R
-
-# git clone Argpore to your pc
-git clone https://github.com/sustc-xylab/Argpore.git
-
-cd Argpore
-
-# Download MetaPhlAn marker gene database at below link:
-https://1drv.ms/u/s!AuLWV06xGWsWhfIGqUedoF3gX-CAzA
-or this link:
-https://pan.baidu.com/s/1K6eFfgZRWJSyBi8dRG1AfA
-
-# Build marker gene index
-lastdb -Q 0 markers.lastindex markers.fasta -P 10
-
-# Run argpore simply like this:
-bash argpore.sh -f test.fa 
-
 # What ARGpore Does
 ARGpore is designed to predict resistome of 2D.fasta/1D.fasta generated from NanoPore sequencing. ARGpore can help users to identify ARG hits on nanopore reads and simultaneously find the carrier population of the identified ARGs by searching against phylogenetic marker genes on nanopore reads
 
@@ -33,6 +9,30 @@ If you use ARGpore in your nanopore dataset analysis please cite:
 Xia, Yu, An-Dong Li, Yu Deng, Xiao-Tao Jiang, Li-Guan Li, and Tong Zhang. MinION Nanopore Sequencing Enables Correlation between Resistome Phenotype and Genotype of Coliform Bacteria in Municipal Sewage. Frontiers in Microbiology 2017
 
 
+pre-requisites for installation
+	lastal	there is a version of last-744 will be downloaded with argpore in this git 
+			please makesure lastal and lastdb in last-744/src are execuatable and in your PATH
+			before run argpore.sh 
+	ruby
+	R
+
+Installation 
+git clone Argpore to your pc
+git clone https://github.com/sustc-xylab/Argpore.git
+cd Argpore
+
+Download MetaPhlAn marker gene database at below link:
+https://1drv.ms/u/s!AuLWV06xGWsWhfIGqUedoF3gX-CAzA
+or this link:
+https://pan.baidu.com/s/1K6eFfgZRWJSyBi8dRG1AfA
+
+Build marker gene index
+lastdb -Q 0 markers.lastindex markers.fasta -P 10
+
+Run argpore simply like this:
+bash argpore.sh -f test.fa 
+
+Detailed usage
 *Input:*
 
 input of ARGpore is simply your 2D.fasta/1D.fasta
