@@ -14,7 +14,7 @@ Xia, Yu, An-Dong Li, Yu Deng, Xiao-Tao Jiang, Li-Guan Li, and Tong Zhang. MinION
 ## Pre-requisites for installation
 
 	lastal	there is a version of last-744 will be downloaded with argpore in this git 
-		please makesure lastal and lastdb in last-744/src are execuatable and in your PATH
+		please make sure lastal and lastdb in last-744/scr are execuatable and in your PATH
 		before run argpore.sh 
 	ruby
 	R
