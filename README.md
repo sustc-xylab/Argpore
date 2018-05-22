@@ -32,7 +32,7 @@ lastdb -Q 0 markers.lastindex markers.fasta -P 10
 Run argpore simply like this:
 bash argpore.sh -f test.fa 
 
-Detailed usage
+Detailed usage:
 *Input:*
 
 input of ARGpore is simply your 2D.fasta/1D.fasta
