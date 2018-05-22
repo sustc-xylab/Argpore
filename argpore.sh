@@ -45,8 +45,8 @@ OPTIND=1  # Reset in case getopts has been used previously in the shell.
 # initialize your own variables:
 N_threads="1"
 Input_fa=""
-Lencuoff="0.7"
-Simcutoff="80"
+Lencuoff="0.9"
+Simcutoff="60"
 Output=$Input_fa
 nowt=`date +%Y-%m-%d.%H:%M:%S`;
 # nowt="2018-05-17.08:52:33"
@@ -109,11 +109,11 @@ then
 fi
 if [ -z "$Simcutoff" ]
 then
-	Simcutoff="80"
+	Simcutoff="60"
 fi
 if [ -z "$Lencuoff" ]
 then
-	Lencuoff="0.7"
+	Lencuoff="0.9"
 fi
 if [ -z "$N_threads" ]
 then
@@ -122,6 +122,10 @@ fi
 shift "$((OPTIND-1))"
 # echo $Input_fa $Simcutoff $Lencuoff $N_threads $Output $DIR $nowt
 
+# subset the name of the $Input_fa
+# $Input_fa : including input.fa path while $Input_fa2 only contain name
+myarray=(`echo $Input_fa| tr "/" " "`) 
+Input_fa2=${myarray[-1]}
 
 
 
@@ -131,17 +135,17 @@ shift "$((OPTIND-1))"
 ########
 
 echo "start argpore @ `date +"%Y-%m-%d %T"`"
-echo "search agaisnt SARG-nt with similarity cutoff $Simcutoff and alignment length cutoff $Lencuoff using $N_threads threads"
+echo "search $Input_fa2 agaisnt SARG-nt with similarity cutoff $Simcutoff and alignment length cutoff $Lencuoff using $N_threads threads"
+# mkdir -p ./tmp
 
-
-${DIR}/last-744/src/lastal -s 2 -T 0 -Q 0 -a 1 -P $N_threads -f BlastTab ${DIR}/ARGs_database_renamed.fnt.subset.lastindex $Input_fa > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast
+lastal -s 2 -T 0 -Q 0 -a 1 -P $N_threads -f BlastTab ${DIR}/ARGs_database_renamed.fnt.subset.lastindex $Input_fa > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast
 echo "finish searching againt SARG-nt database"
 echo "parsing SARG-nt results"
-grep -v "#" ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast.modified
+grep -v "#" /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast.modified
 
-ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/ARGs_database_renamed.fnt.subset < ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast.modified > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast2
+ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/ARGs_database_renamed.fnt.subset < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast.modified > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast2
 
-ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast2 > ./tmp/${Input_fa}_${nowt}_sarg.tab
+ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast2 > ${Input_fa}_${nowt}_sarg.tab
 
 echo "finish parsing SARG-nt results"
 
@@ -150,17 +154,17 @@ echo "finish parsing SARG-nt results"
 # lastal 1D.fa or 2D.fa agaisnt markers.fasta
 #################
 echo " "
-echo "search agaisnt MetaPhlan 2.0 markergene database with similarity cutoff $Simcutoff and alignment length cutoff $Lencuoff using $N_threads threads"
+echo "search $Input_fa2 agaisnt MetaPhlan 2.0 markergene database with similarity cutoff $Simcutoff and alignment length cutoff $Lencuoff using $N_threads threads"
 
-${DIR}/last-744/src/lastal -s 2 -T 0 -Q 0 -a 1 -b 1 -q 2 -P $N_threads -f BlastTab ${DIR}/markers.lastindex $Input_fa > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast3
+lastal -s 2 -T 0 -Q 0 -a 1 -b 1 -q 2 -P $N_threads -f BlastTab ${DIR}/markers.lastindex $Input_fa > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3
 
 echo "finish searching agaisnt markergene database"
 echo "parsing markergene results"
-grep -v "#" ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast3 > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast3.modified
+grep -v "#" /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3 > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3.modified
 
-ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/markers.fasta < ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast3.modified > ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast4
+ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/markers.fasta < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3.modified > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast4
 
-ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < ./tmp/argpore_${nowt}_${Input_fa}_tmp.blast4 > ./tmp/${Input_fa}_${nowt}_marker.tab
+ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast4 > ${Input_fa}_${nowt}_marker.tab
 
 echo "finish parsing markergene results"
 
