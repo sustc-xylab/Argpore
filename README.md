@@ -11,11 +11,11 @@ If you use ARGpore in your nanopore dataset analysis please cite:
 Xia, Yu, An-Dong Li, Yu Deng, Xiao-Tao Jiang, Li-Guan Li, and Tong Zhang. MinION Nanopore Sequencing Enables Correlation between Resistome Phenotype and Genotype of Coliform Bacteria in Municipal Sewage. Frontiers in Microbiology 2017
 
 
-## pre-requisites for installation
+## Pre-requisites for installation
 
 	lastal	there is a version of last-744 will be downloaded with argpore in this git 
-			please makesure lastal and lastdb in last-744/src are execuatable and in your PATH
-			before run argpore.sh 
+		please makesure lastal and lastdb in last-744/src are execuatable and in your PATH
+		before run argpore.sh 
 	ruby
 	R
 
