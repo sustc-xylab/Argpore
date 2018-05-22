@@ -49,5 +49,5 @@ input_runtime_arg.tab:nanopore reads with valid match to SARG database
 
 input_runtime_arg.w.taxa.tab: ARG-containing nanopore reads with taxa annotated
 
-# the defult similarity cutoff （0.8） and alignment length cutoff （0.7） is set to ensure > 50% exact base match to ARG reference sequence or marker gene as 0.8*0.7*0.9 (the average accurary of 1D nanopore reads） = 0.504 
+
 
