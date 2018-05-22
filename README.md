@@ -23,9 +23,9 @@ Xia, Yu, An-Dong Li, Yu Deng, Xiao-Tao Jiang, Li-Guan Li, and Tong Zhang. MinION
 
 git clone Argpore to your pc
 
-git clone https://github.com/sustc-xylab/Argpore.git
+	git clone https://github.com/sustc-xylab/Argpore.git
 
-cd Argpore
+	cd Argpore
 
 ## Download MetaPhlAn marker gene database at below link:
 
@@ -37,11 +37,11 @@ https://pan.baidu.com/s/1K6eFfgZRWJSyBi8dRG1AfA
 
 ## Build marker gene index
 
-lastdb -Q 0 markers.lastindex markers.fasta -P 10
+	lastdb -Q 0 markers.lastindex markers.fasta -P 10
 
 ## Run argpore simply like this:
 
-bash argpore.sh -f test.fa 
+	bash argpore.sh -f test.fa 
 
 ## Detailed usage:
 
