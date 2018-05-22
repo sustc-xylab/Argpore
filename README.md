@@ -8,6 +8,7 @@
 
 # git clone Argpore to your pc
 git clone https://github.com/sustc-xylab/Argpore.git
+
 cd Argpore
 
 # Download MetaPhlAn marker gene database at below link:
