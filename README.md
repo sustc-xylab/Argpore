@@ -17,7 +17,8 @@ Xia, Yu, An-Dong Li, Yu Deng, Xiao-Tao Jiang, Li-Guan Li, and Tong Zhang. MinION
 		please make sure lastal and lastdb in last-744/scr are execuatable and in your PATH
 		before run argpore.sh 
 	ruby
-	R
+	R and plyr library
+	
 
 ## Installation 
 
