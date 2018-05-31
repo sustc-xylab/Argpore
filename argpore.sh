@@ -131,7 +131,6 @@ myarray=(`echo $Input_fa| tr "/" " "`)
 Input_fa2=${myarray[-1]}
 
 
-
 #######
 # ARG quantification
 # LAST against the SARG-nt
