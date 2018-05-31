@@ -35,7 +35,7 @@ if(length(args[4])==0) args[4]<-args[1]
 # arg.nanopore: results aggregated by ARG type
 #############
 library(plyr)
-tmpname2<-paste(args[1],args[5],"sarg.tab",sep="_")
+tmpname2<-paste(args[1],"sarg.tab",sep="_")
 file<-paste(tmpname2,sep="")
 arg.coliform<-read.delim(file,stringsAsFactors = F,header=F)
 
@@ -107,7 +107,7 @@ if(nrow(arg.coliform2)>0){
 # taxa: taxa information of nanopore query after filter
 ###############
 # read in the 2D.fa last marker gene result
-tmpname3<-paste(args[1],args[5],"marker.tab",sep="_")
+tmpname3<-paste(args[1],"marker.tab",sep="_")
 file2<-paste(tmpname3,sep="")
 
 taxa<-read.delim(file2,stringsAsFactors = F,header=F)

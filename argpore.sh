@@ -148,7 +148,7 @@ grep -v "#" /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast > /tmp/argpore_${nowt}_$
 
 ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/ARGs_database_renamed.fnt.subset < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast.modified > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast2
 
-ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast2 > ${Input_fa}_${nowt}_sarg.tab
+ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast2 > ${Input_fa}_sarg.tab
 
 echo "finish parsing SARG-nt results"
 
@@ -167,7 +167,7 @@ grep -v "#" /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3 > /tmp/argpore_${nowt}_
 
 ruby ${DIR}/BlastTab.addlen.rb -s -f ${DIR}/markers.fasta < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast3.modified > /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast4
 
-ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast4 > ${Input_fa}_${nowt}_marker.tab
+ruby ${DIR}/BlastTab.addlen.rb -f $Input_fa < /tmp/argpore_${nowt}_${Input_fa2}_tmp.blast4 > ${Input_fa}_marker.tab
 
 echo "finish parsing markergene results"
 
